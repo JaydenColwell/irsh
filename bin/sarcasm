@@ -2,19 +2,19 @@
 
 # get input either from arguments or stdin
 if set -q argv[1]
-    set text "$argv"
+    set text (string join " " -- $argv)
 else
-    set text (cat)
+    set text (cat | string collect)
 end
 
 # lowercase everything first
-set text (string lower -- $text)
+set text (string lower -- $text | string collect)
 
 set out ""
 set count 1
 
 # sets all even characters to upper
-for char in (string split '' -- $text)
+for char in (string split '' -- "$text")
     if string match -qr '[a-z]' $char
         if test (math "$count % 2") -eq 0
             set out "$out"(string upper -- $char)
