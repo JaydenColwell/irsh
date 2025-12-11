@@ -9,6 +9,16 @@ end
 
 set nick (printf "%s" "$argv" | tr -d '/')
 
+# Add prefix if missing
+if not string match -q '@*' $nick
+    set nick "@$nick"
+end
+
+# Add suffix if missing
+if not string match -q '*:cclub.cs.wmich.edu' $nick
+    set nick "$nick:cclub.cs.wmich.edu"
+end
+
 if not test -f var/last/$nick
     printf "%s: %s: Unknown username\n" $self $nick >&2
     exit 1
