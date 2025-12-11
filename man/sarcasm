@@ -1,0 +1,8 @@
+
+[string]...
+
+Convert text to alternating case (mocking SpongeBob meme format).
+
+Reads from arguments or standard input. Only alphabetic characters are
+alternated; spaces, punctuation, and other special characters are preserved. 
+The first letter is lowercase, second uppercase, third lowercase, and so on.
